@@ -60,7 +60,6 @@ module Data.FiniteMap (
     ) where
 
 import Data.Maybe
-import ReadShowTerm (readQTerm, showQTerm)
 
 --- order predicates are boolean
 type LeKey key = key -> key -> Bool
@@ -453,14 +452,14 @@ fmSortBy p l = keysFM (listToFM p (zip l (repeat ())))
 --- Transforms a finite map into a string. For efficiency reasons,
 --- the tree structure is shown which is valid for reading only if one
 --- uses the same ordering predicate.
-showFM :: FM _ _ -> String
-showFM (FM _ fm) = showQTerm fm
+showFM :: (Show k, Show v) => FM k v -> String
+showFM (FM _ fm) = show fm
 
 --- Transforms a string representation of a finite map into a finite map.
 --- One has two provide the same ordering predicate as used in the
 --- original finite map.
-readFM :: LeKey key -> String -> FM key _
-readFM p s = FM p (readQTerm s)
+readFM :: (Read key, Read val) => LeKey key -> String -> FM key val
+readFM p s = FM p (read s)
 
 -----------------------------------------------------
 -- internal Implementation
@@ -477,6 +476,7 @@ data FiniteMap key elt
     Int{-STRICT-}              -- Size >= 1
     (FiniteMap key elt)        -- Children
     (FiniteMap key elt)
+  deriving (Show, Read)
 
 isEmptyFM' :: FiniteMap _ _ -> Bool
 isEmptyFM' fm = sizeFM' fm == 0
