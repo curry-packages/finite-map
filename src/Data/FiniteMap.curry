@@ -1,6 +1,7 @@
 -----------------------------------------------------------------------------
 --- *IMPORTANT NOTE*: This library is deprecated and included only
---- for compatibility with older programs. Use library `Data.Map` instead!
+--- for compatibility with older programs.
+--- Use library `Data.Map` (in package `containers`) instead!
 ---
 --- A finite map is an efficient purely functional data structure
 --- to store a mapping from keys to values.

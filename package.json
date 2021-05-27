@@ -10,10 +10,10 @@
         "base"    : ">= 3.0.0, < 4.0.0",
         "random"  : ">= 3.0.0, < 4.0.0"
     },
-    "exportedModules": [ "Data.Map", "Data.FiniteMap" ],
+    "exportedModules": [ "Data.FiniteMap" ],
     "testsuite": [
         { "src-dir": "src",
-          "modules": [ "Data.Map", "Data.FiniteMap" ]
+          "modules": [ "Data.FiniteMap" ]
         },
         { "src-dir": "test",
           "modules": [ "TestFiniteMap" ]
